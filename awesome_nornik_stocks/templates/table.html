@@ -1,0 +1,33 @@
+{% regroup stocks by timestamp as stock_list %}
+<table class="table table-striped">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Datetime</th>
+      <th scope="col">Apple</th>
+      <th scope="col">Amazon</th>
+      <th scope="col">Facebook</th>
+      <th scope="col">Google</th>
+      <th scope="col">Netflix</th>
+      <th scope="col">Tesla</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for stock in stock_list %}
+
+    <tr>
+      <th scope="row">
+
+        {{ stock.grouper }}
+
+      </th>
+      {% for stock_instance in stock.list%}
+      <td>
+
+        {{ stock_instance.stock_price }}
+
+      </td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

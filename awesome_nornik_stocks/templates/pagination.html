@@ -1,0 +1,19 @@
+{% if is_paginated %}
+<div class="pagination">
+  <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+    <div class="btn-group mr-2" role="group" aria-label="First group">
+      {% if page_obj.has_previous %}
+      <button type="button" class="btn btn-dark" href="?page=1">first</button>
+      <button type="button" class="btn btn-dark" aria-label="Previous" href="?page={{ page_obj.previous_page_number }}">«</button>
+      {% endif %}
+      <button type="button" class="btn btn-dark disabled">
+        Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+      </button>
+      {% if page_obj.has_next %}
+      <button type="button" class="btn btn-dark" aria-label="Next" href="?page={{ page_obj.next_page_number }}">»</button>
+      <button type="button" class="btn btn-dark" href="?page={{ page_obj.paginator.num_pages }}">last</button>
+      {% endif %}
+    </div>
+  </div>
+</div>
+{% endif %}
